@@ -20,6 +20,8 @@ public class SpaceMissionsTrackerTry2Application {
     TODO commit/link to the Postman queries
     TODO use lombok for getters/setters
     TODO use swagger
+    TODO use DTO and mapping
+    TODO validations
      */
 
 }
