@@ -20,6 +20,7 @@ public class SpaceMissionsTrackerTry2Application {
     TODO instead of H2 in-mem DB use stored DB
     TODO commit/link to the Postman queries
     TODO use lombok for getters/setters
+    TODO use swagger
      */
 
 }
