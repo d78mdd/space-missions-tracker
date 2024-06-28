@@ -21,7 +21,7 @@ public class SpaceMissionsTrackerTry2Application {
     TODO use swagger
     TODO use DTO and mapping
     TODO validations
-    TODO return http status 404 not found instead of 200 ok for the GET "/{id}" method when the id does not exist
+    TODO use @ResponseStatus instead of ResponseEntity<>(body, HttpStatusCode.valueOf(num));
      */
 
 }

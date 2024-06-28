@@ -3,6 +3,7 @@ package com.diman.space.SpaceMissionsTrackerTry2.controller;
 import com.diman.space.SpaceMissionsTrackerTry2.model.Mission;
 import com.diman.space.SpaceMissionsTrackerTry2.service.MissionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -35,14 +36,19 @@ public class MissionController {
     }
 
     @GetMapping("/{id}")
-    public Mission getMission(@PathVariable Long id) {
-        return missionService.getMissionById(id);
+    public ResponseEntity<Mission> getMission(@PathVariable Long id) {
+        Mission mission = missionService.getMissionById(id);
+        if (mission == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else {
+            return new ResponseEntity<>(mission, HttpStatus.OK);
+        }
     }
 
     @PostMapping
     public ResponseEntity<Mission> createMission(@RequestBody Mission mission) {
         Mission missionSaved = missionService.saveMission(mission);
-        return new ResponseEntity<>(missionSaved, HttpStatusCode.valueOf(201));
+        return new ResponseEntity<>(missionSaved, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
