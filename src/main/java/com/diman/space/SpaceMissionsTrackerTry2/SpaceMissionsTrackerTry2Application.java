@@ -18,10 +18,10 @@ public class SpaceMissionsTrackerTry2Application {
     TODO instead of JPA use JDBC
     TODO instead of H2 in-mem DB use stored DB
     TODO commit/link to the Postman queries
-    TODO use lombok for getters/setters
     TODO use swagger
     TODO use DTO and mapping
     TODO validations
+    TODO return http status 201 created instead of 200 ok for the POST method
      */
 
 }
