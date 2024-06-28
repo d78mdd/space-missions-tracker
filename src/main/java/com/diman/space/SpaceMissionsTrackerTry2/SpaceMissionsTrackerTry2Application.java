@@ -12,4 +12,14 @@ public class SpaceMissionsTrackerTry2Application {
         SpringApplication.run(SpaceMissionsTrackerTry2Application.class, args);
     }
 
+    /*
+    TODO place classes in proper packages
+    TODO implement tests in Java with junit/testng/spring test mvc
+    TODO use template engine thymeleaf
+    TODO instead of JPA use JDBC
+    TODO instead of H2 in-mem DB use stored DB
+    TODO commit/link to the Postman queries
+    TODO use lombok for getters/setters
+     */
+
 }
