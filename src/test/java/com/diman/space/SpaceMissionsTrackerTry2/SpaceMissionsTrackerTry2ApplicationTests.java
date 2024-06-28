@@ -4,7 +4,6 @@ import com.diman.space.SpaceMissionsTrackerTry2.controller.MissionController;
 import com.diman.space.SpaceMissionsTrackerTry2.model.Mission;
 import com.diman.space.SpaceMissionsTrackerTry2.service.MissionService;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -17,10 +16,11 @@ import java.util.List;
 
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(MissionController.class)
 class SpaceMissionsTrackerTry2ApplicationTests {
@@ -59,7 +59,27 @@ class SpaceMissionsTrackerTry2ApplicationTests {
                 .andExpect(status().isNotFound());
     }
 
+    @Test
+    public void testCreateMission() throws Exception {
+        Mission mission = new Mission(1L, "Voyager 1", LocalDate.of(1977, 9, 5), "Completed", "Interstellar space probe.");
 
+        when(service.saveMission(any(Mission.class)))
+                .thenReturn(mission);
+
+        mockMvc.perform(post("/api/missions")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"name\": \"Voyager 1\", \"launchDate\": \"1977-09-05\", \"status\":\"Completed\", \"description\":\"Interstellar space probe.\"}"))
+                .andExpect(status().isCreated())
+                .andExpect(header().string("Location", "/api/missions/1"))
+                .andExpect(jsonPath("$.id",             is(1)))
+                .andExpect(jsonPath("$.name",           is(mission.getName())))
+                .andExpect(jsonPath("$.launchDate",     is("1977-09-05")))
+                .andExpect(jsonPath("$.status",         is(mission.getStatus())))
+                .andExpect(jsonPath("$.description",    is(mission.getDescription())));
+    }
 
 
 }
+
+
+

@@ -3,6 +3,7 @@ package com.diman.space.SpaceMissionsTrackerTry2.controller;
 import com.diman.space.SpaceMissionsTrackerTry2.model.Mission;
 import com.diman.space.SpaceMissionsTrackerTry2.service.MissionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -47,7 +48,11 @@ public class MissionController {
     @PostMapping
     public ResponseEntity<Mission> createMission(@RequestBody Mission mission) {
         Mission missionSaved = missionService.saveMission(mission);
-        return new ResponseEntity<>(missionSaved, HttpStatus.CREATED);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Location", "/api/missions/1"); // TODO remove hardcoded id
+
+        return new ResponseEntity<>(missionSaved, headers, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
