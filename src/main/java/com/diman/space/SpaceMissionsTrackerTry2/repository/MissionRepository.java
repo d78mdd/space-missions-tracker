@@ -1,5 +1,6 @@
-package com.diman.space.SpaceMissionsTrackerTry2;
+package com.diman.space.SpaceMissionsTrackerTry2.repository;
 
+import com.diman.space.SpaceMissionsTrackerTry2.model.Mission;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.time.LocalDate;

@@ -1,4 +1,4 @@
-package com.diman.space.SpaceMissionsTrackerTry2;
+package com.diman.space.SpaceMissionsTrackerTry2.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

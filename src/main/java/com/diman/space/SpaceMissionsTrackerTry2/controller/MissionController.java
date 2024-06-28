@@ -1,5 +1,7 @@
-package com.diman.space.SpaceMissionsTrackerTry2;
+package com.diman.space.SpaceMissionsTrackerTry2.controller;
 
+import com.diman.space.SpaceMissionsTrackerTry2.model.Mission;
+import com.diman.space.SpaceMissionsTrackerTry2.service.MissionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
