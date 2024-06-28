@@ -21,6 +21,13 @@ public class SpaceMissionsTrackerTry2Application {
     TODO use DTO and mapping
     TODO validations
     TODO use interfaces and implementation classes for the repository and service
+
+    TODO use more conscious way for mockMvc.perform(post("/api/missions")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content
+        for the next project?
+    TODO use more conscious way for andExpect(jsonPath())
+        for the next project?
      */
 
 }
