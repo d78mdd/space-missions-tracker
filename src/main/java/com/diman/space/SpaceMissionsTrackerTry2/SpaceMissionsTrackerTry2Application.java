@@ -21,7 +21,7 @@ public class SpaceMissionsTrackerTry2Application {
     TODO use swagger
     TODO use DTO and mapping
     TODO validations
-    TODO use @ResponseStatus instead of ResponseEntity<>(body, HttpStatusCode.valueOf(num));
+    TODO use interfaces and implementation classes for the repository and service
      */
 
 }
