@@ -70,7 +70,6 @@ public class MissionServiceTests {
         assertEquals(mission.getName(), result.getName());
     }
 
-
     @Test
     public void testDeleteMission() {
         doNothing()
