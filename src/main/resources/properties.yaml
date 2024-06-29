@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: SpaceMissionsTrackerTry2
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driverClassName: org.h2.Driverytyt
+    name: sa
+    password: password
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+  h2:
+    console:
+      enabled: true
