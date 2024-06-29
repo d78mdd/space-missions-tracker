@@ -67,29 +67,24 @@ class MissionControllerTests {
         verify(service, times(0)).getAllMissions();
     }
 
-    @Test
     public void testGetMissionsByName() {
         // TODO implement
     }
 
-    @Test
     public void testGetMissionsByDateEmptyResult() {
         // TODO implement
     }
 
-    @Test
     public void testGetMissionsByNameEmptyResult() {
         // TODO implement
     }
 
-    @Test
     public void testGetAllMissionsEmptyResult() {
         // TODO implement
     }
 
 
 
-    @Test
     public void testGetMissionById() {
         // TODO implement
     }
@@ -125,41 +120,34 @@ class MissionControllerTests {
                 .andExpect(jsonPath("$.description", is(mission.getDescription())));
     }
 
-    @Test
     public void testCreateMissionInvalidDate() {
         // TODO implement
     }
 
-    @Test
     public void testCreateMissionEmptyRequestBody() {
         // TODO implement
     }
 
 
 
-    @Test
     public void testUpdateMission() {
         // TODO implement
     }
 
-    @Test
     public void testUpdateMissionMissingId() {
         // TODO implement
     }
 
-    @Test
     public void testUpdateMissionMissingRequestBody() {
         // TODO implement
     }
 
 
 
-    @Test
     public void testDeleteMission() {
         // TODO implement
     }
 
-    @Test
     public void testDeleteMissionMissingId() {
         // TODO implement
     }
