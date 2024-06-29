@@ -61,13 +61,12 @@ public class MissionServiceTests {
     public void testSaveMission() {
         Mission mission = new Mission(1L, "BepiColombo - Mercury", LocalDate.of(2018, 10, 20), "Ongoing", "Mercury exploration mission.");
 
-        when(dao.insert(any(Mission.class)))
-                .thenReturn(mission);
+        doNothing()
+                .when(dao).insert(any(Mission.class));
 
-        Mission result = service.saveMission(mission);
+        service.saveMission(mission);
 
-        assertNotNull(result);
-        assertEquals(mission.getName(), result.getName());
+        verify(dao, times(1)).insert(any(Mission.class));
     }
 
     @Test
