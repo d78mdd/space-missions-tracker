@@ -23,7 +23,11 @@ public class MissionDaoImpl implements MissionDao {
 
     @Override
     public List<Mission> findByLaunchDate(LocalDate launchDate) {
-        return null;
+        String sql = "" +
+                "SELECT * FROM missions " +
+                "WHERE launch_date = ?";
+
+        return jdbcTemplate.query(sql, new MissionRowMapper(), launchDate);
     }
 
     @Override
