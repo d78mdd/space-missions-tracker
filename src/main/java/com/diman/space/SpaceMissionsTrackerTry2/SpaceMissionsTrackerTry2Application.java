@@ -31,5 +31,4 @@ public class SpaceMissionsTrackerTry2Application {
     TODO use more conscious way for andExpect(jsonPath())
         for the next project?
      */
-
 }
