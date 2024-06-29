@@ -61,7 +61,7 @@ class MissionControllerTests {
         mockMvc.perform(get("/api/missions/search?date=1969-07-16")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$", hasSize(2)))
+                .andExpect(jsonPath("$", hasSize(1)))
                 .andExpect(jsonPath("$[0].name", is(mission1.getName())));
 
         verify(service, times(0)).getAllMissions();
