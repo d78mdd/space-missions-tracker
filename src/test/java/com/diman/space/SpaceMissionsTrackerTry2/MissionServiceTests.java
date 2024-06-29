@@ -85,7 +85,7 @@ public class MissionServiceTests {
         Mission mission1 = new Mission(1L, "Sputnik 1", LocalDate.of(1957, 10, 4), "Completed", "First artificial Earth satellite.");
         List<Mission> missions = List.of(mission1);
 
-        when(dao.findByNameContainingIgnoreCase("Sputnik 1"))
+        when(dao.findByExactName("Sputnik 1"))
                 .thenReturn(missions);
 
         List<Mission> result = service.searchMissionsByName("Sputnik 1");
