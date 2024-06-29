@@ -11,8 +11,12 @@ import java.util.List;
 @Service
 public class MissionService {
 
-    @Autowired
     private MissionRepository missionRepository;
+
+    @Autowired
+    public MissionService(MissionRepository missionRepository) {
+        this.missionRepository = missionRepository;
+    }
 
     public List<Mission> getAllMissions() {
         return missionRepository.findAll();

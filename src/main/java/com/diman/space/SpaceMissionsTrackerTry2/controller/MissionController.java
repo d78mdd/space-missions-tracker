@@ -15,8 +15,12 @@ import java.util.List;
 @RequestMapping("/api/missions")
 public class MissionController {
 
-    @Autowired
     private MissionService missionService;
+
+    @Autowired
+    public MissionController(MissionService missionService) {
+        this.missionService = missionService;
+    }
 
     @GetMapping()
     public List<Mission> getAllMissions() {
