@@ -15,7 +15,9 @@ public interface MissionService {
 
     Mission getMissionById(Long id);
 
-    Mission saveMission(Mission mission);
+    void saveMission(Mission mission);
+
+    void updateMission(Mission mission);
 
     void deleteMission(Long id);
 

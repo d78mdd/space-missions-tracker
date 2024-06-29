@@ -1,7 +1,7 @@
 package com.diman.space.SpaceMissionsTrackerTry2;
 
 import com.diman.space.SpaceMissionsTrackerTry2.model.Mission;
-import com.diman.space.SpaceMissionsTrackerTry2.repository.MissionRepository;
+import com.diman.space.SpaceMissionsTrackerTry2.dao.MissionDao;
 import com.diman.space.SpaceMissionsTrackerTry2.service.MissionService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,7 @@ import static org.mockito.Mockito.*;
 public class MissionServiceTests {
 
     @MockBean
-    private MissionRepository repository;
+    private MissionDao dao;
 
     @Autowired
     private MissionService service;
@@ -34,7 +34,7 @@ public class MissionServiceTests {
         Mission mission2 = new Mission(2L, "Artemis I", LocalDate.of(2024, 12, 15), "Planned", "First mission of NASA's Artemis program.");
         List<Mission> missions = Arrays.asList(mission1, mission2);
 
-        when(repository.findAll())
+        when(dao.findAll())
                 .thenReturn(missions);
 
         List<Mission> result = service.getAllMissions();
@@ -48,7 +48,7 @@ public class MissionServiceTests {
     public void testGetMissionById() {
         Mission mission = new Mission(1L, "James Webb Space Telescope", LocalDate.of(2021, 12, 15), "Ongoing", "Large space-based observatory.");
 
-        when(repository.findById(1L))
+        when(dao.findById(1L))
                 .thenReturn(Optional.of(mission));
 
         Mission result = service.getMissionById(1L);
@@ -61,7 +61,7 @@ public class MissionServiceTests {
     public void testSaveMission() {
         Mission mission = new Mission(1L, "BepiColombo - Mercury", LocalDate.of(2018, 10, 20), "Ongoing", "Mercury exploration mission.");
 
-        when(repository.save(any(Mission.class)))
+        when(dao.insert(any(Mission.class)))
                 .thenReturn(mission);
 
         Mission result = service.saveMission(mission);
@@ -73,11 +73,11 @@ public class MissionServiceTests {
     @Test
     public void testDeleteMission() {
         doNothing()
-                .when(repository).deleteById(1L);
+                .when(dao).deleteById(1L);
 
         service.deleteMission(1L);
 
-        verify(repository, times(1)).deleteById(1L);
+        verify(dao, times(1)).deleteById(1L);
     }
 
 
@@ -86,7 +86,7 @@ public class MissionServiceTests {
         Mission mission1 = new Mission(1L, "Sputnik 1", LocalDate.of(1957, 10, 4), "Completed", "First artificial Earth satellite.");
         List<Mission> missions = List.of(mission1);
 
-        when(repository.findByNameContainingIgnoreCase("Sputnik 1"))
+        when(dao.findByNameContainingIgnoreCase("Sputnik 1"))
                 .thenReturn(missions);
 
         List<Mission> result = service.searchMissionsByName("Sputnik 1");
@@ -94,8 +94,8 @@ public class MissionServiceTests {
         assertEquals(1, result.size());
         assertEquals(mission1.getName(), result.get(0).getName());
 
-        verify(repository, times(0)).findByLaunchDate(any(LocalDate.class));
-        verify(repository, times(0)).findAll();
+        verify(dao, times(0)).findByLaunchDate(any(LocalDate.class));
+        verify(dao, times(0)).findAll();
     }
 
     @Test
@@ -103,7 +103,7 @@ public class MissionServiceTests {
         Mission mission1 = new Mission(1L, "Sputnik 1", LocalDate.of(1957, 10, 4), "Completed", "First artificial Earth satellite.");
         List<Mission> missions = List.of(mission1);
 
-        when(repository.findByLaunchDate(LocalDate.of(1957,10,4)))
+        when(dao.findByLaunchDate(LocalDate.of(1957,10,4)))
                 .thenReturn(missions);
 
         List<Mission> result = service.searchMissionsByDate(LocalDate.of(1957,10,4));
@@ -111,8 +111,8 @@ public class MissionServiceTests {
         assertEquals(1, result.size());
         assertEquals(mission1.getName(), result.get(0).getName());
 
-        verify(repository, times(0)).findByNameContainingIgnoreCase(any(String.class));
-        verify(repository, times(0)).findAll();
+        verify(dao, times(0)).findByNameContainingIgnoreCase(any(String.class));
+        verify(dao, times(0)).findAll();
     }
 
     // TODO add more service tests?

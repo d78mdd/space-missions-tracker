@@ -49,20 +49,15 @@ public class MissionController {
         }
     }
 
-    @PostMapping
-    public ResponseEntity<Mission> createMission(@RequestBody Mission mission) {
-        Mission missionSaved = missionService.saveMission(mission);
-
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Location", "/api/missions/" + missionSaved.getId());
-
-        return new ResponseEntity<>(missionSaved, headers, HttpStatus.CREATED);
+    @PostMapping()
+    public ResponseEntity<Void> createMission(@RequestBody Mission mission) {
+        missionService.saveMission(mission);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    public Mission updateMission(@PathVariable Long id, @RequestBody Mission mission) {
+    public void updateMission(@PathVariable Long id, @RequestBody Mission mission) {
         mission.setId(id);
-        return missionService.saveMission(mission);
     }
 
     @DeleteMapping("/{id}")
