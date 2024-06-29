@@ -20,7 +20,6 @@ public class SpaceMissionsTrackerTry2Application {
     TODO use DTO and mapping
     TODO validations
     TODO use interfaces and implementation classes for the repository and service
-    TODO add Postman query for search mission by name and search mission by date
     TODO add variant using Gradle instead of Maven
 
     TODO use more conscious way for mockMvc.perform(post("/api/missions")
