@@ -54,7 +54,7 @@ public class MissionController {
         Mission missionSaved = missionService.saveMission(mission);
 
         HttpHeaders headers = new HttpHeaders();
-        headers.add("Location", "/api/missions/1"); // TODO remove hardcoded id
+        headers.add("Location", "/api/missions/" + missionSaved.getId());
 
         return new ResponseEntity<>(missionSaved, headers, HttpStatus.CREATED);
     }
