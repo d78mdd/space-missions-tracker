@@ -50,9 +50,31 @@ class SpaceMissionsTrackerTry2ApplicationTests {
     }
 
     @Test
+    public void testGetMissionsByDate() {
+        // TODO implement
+    }
+
+    @Test
+    public void testGetMissionsByName() {
+        // TODO implement
+    }
+
+    @Test
+    public void testGetMissionsByDateEmptyResult() {
+        // TODO implement
+    }
+
+    @Test
+    public void testGetMissionsByNameEmptyResult() {
+        // TODO implement
+    }
+
+    @Test
     public void testGetAllMissionsEmptyResult() {
         // TODO implement
     }
+
+
 
     @Test
     public void testGetMissionById() {
@@ -68,6 +90,8 @@ class SpaceMissionsTrackerTry2ApplicationTests {
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNotFound());
     }
+
+
 
     @Test
     public void testCreateMission() throws Exception {
@@ -93,8 +117,38 @@ class SpaceMissionsTrackerTry2ApplicationTests {
         // TODO implement
     }
 
+    @Test
+    public void testCreateMissionEmptyRequestBody() {
+        // TODO implement
+    }
+
+
+
+    @Test
+    public void testUpdateMission() {
+        // TODO implement
+    }
+
+    @Test
+    public void testUpdateMissionMissingId() {
+        // TODO implement
+    }
+
+    @Test
+    public void testUpdateMissionMissingRequestBody() {
+        // TODO implement
+    }
+
+
+
+    @Test
+    public void testDeleteMission() {
+        // TODO implement
+    }
+
+    @Test
+    public void testDeleteMissionMissingId() {
+        // TODO implement
+    }
 
 }
-
-
-
