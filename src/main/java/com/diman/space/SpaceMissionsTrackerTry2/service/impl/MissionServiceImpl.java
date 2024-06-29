@@ -26,7 +26,7 @@ public class MissionServiceImpl implements MissionService {
 
     @Override
     public List<Mission> searchMissionsByName(String name) {
-        return missionDao.findByNameContainingIgnoreCase(name);
+        return missionDao.findByExactName(name);
     }
 
     @Override

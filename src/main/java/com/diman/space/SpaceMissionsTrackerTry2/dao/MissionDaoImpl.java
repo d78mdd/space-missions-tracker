@@ -22,6 +22,15 @@ public class MissionDaoImpl implements MissionDao {
     }
 
     @Override
+    public List<Mission> findByExactName(String name) {
+        String sql = "" +
+                "SELECT * FROM missions " +
+                "WHERE name = ?";
+
+        return jdbcTemplate.query(sql, new MissionRowMapper(), name);
+    }
+
+    @Override
     public List<Mission> findByLaunchDate(LocalDate launchDate) {
         String sql = "" +
                 "SELECT * FROM missions " +

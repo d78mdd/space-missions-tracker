@@ -10,6 +10,8 @@ public interface MissionDao {
 
     List<Mission> findByNameContainingIgnoreCase(String name);
 
+    List<Mission> findByExactName(String name);
+
     List<Mission> findByLaunchDate(LocalDate launchDate);
 
     List<Mission> findAll();
