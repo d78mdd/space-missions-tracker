@@ -22,6 +22,6 @@ public interface MissionDao {
 
     void deleteById(Long id);
 
-    void update();
+    void update(Mission mission);
 }
 

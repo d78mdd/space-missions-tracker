@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -80,7 +79,18 @@ public class MissionDaoImpl implements MissionDao {
     }
 
     @Override
-    public void update() {
+    public void update(Mission mission) {
+        String sql = "" +
+                "UPDATE missions " +
+                "SET " +
+                "name = ?, " +
+                "launch_date = ?, " +
+                "status = ?, " +
+                "description = ? " +
+                "WHERE id = ? ";
 
+        jdbcTemplate.update(sql,
+                mission.getName(), mission.getLaunchDate(), mission.getStatus(), mission.getDescription(),
+                mission.getId());
     }
 }

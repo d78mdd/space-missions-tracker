@@ -58,6 +58,7 @@ public class MissionController {
     @PutMapping("/{id}")
     public void updateMission(@PathVariable Long id, @RequestBody Mission mission) {
         mission.setId(id);
+        missionService.updateMission(mission);
     }
 
     @DeleteMapping("/{id}")

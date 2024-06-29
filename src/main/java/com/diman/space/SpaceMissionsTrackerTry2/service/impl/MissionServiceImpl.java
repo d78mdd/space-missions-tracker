@@ -46,7 +46,7 @@ public class MissionServiceImpl implements MissionService {
 
     @Override
     public void updateMission(Mission mission) {
-        missionDao.update();
+        missionDao.update(mission);
     }
 
     @Override
