@@ -34,7 +34,10 @@ public class MissionDaoImpl implements MissionDao {
 
     @Override
     public Optional<Mission> findById(Long id) {
-        return Optional.empty();
+        String sql = "" +
+                "SELECT * FROM missions " +
+                "WHERE id = ?";
+        return Optional.ofNullable(jdbcTemplate.queryForObject(sql, new MissionRowMapper(), id));
     }
 
     @Override
