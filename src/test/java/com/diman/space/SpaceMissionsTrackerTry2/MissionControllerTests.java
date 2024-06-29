@@ -105,19 +105,15 @@ class MissionControllerTests {
     public void testCreateMission() throws Exception {
         Mission mission = new Mission(1L, "Voyager 1", LocalDate.of(1977, 9, 5), "Completed", "Interstellar space probe.");
 
-        when(service.saveMission(any(Mission.class)))
-                .thenReturn(mission);
+        doNothing()
+                .when(service).saveMission(any(Mission.class));
 
         mockMvc.perform(post("/api/missions")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("{\"name\": \"Voyager 1\", \"launchDate\": \"1977-09-05\", \"status\":\"Completed\", \"description\":\"Interstellar space probe.\"}"))
-                .andExpect(status().isCreated())
-                .andExpect(header().string("Location", "/api/missions/1"))
-                .andExpect(jsonPath("$.id", is(1)))
-                .andExpect(jsonPath("$.name", is(mission.getName())))
-                .andExpect(jsonPath("$.launchDate", is("1977-09-05")))
-                .andExpect(jsonPath("$.status", is(mission.getStatus())))
-                .andExpect(jsonPath("$.description", is(mission.getDescription())));
+                .andExpect(status().isCreated());
+
+        verify(service, times(1)).saveMission(any(Mission.class));
     }
 
     public void testCreateMissionInvalidDate() {
