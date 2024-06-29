@@ -80,6 +80,41 @@ public class MissionServiceTests {
         verify(repository, times(1)).deleteById(1L);
     }
 
+
+    @Test
+    public void testSearchMissionsByName() {
+        Mission mission1 = new Mission(1L, "Sputnik 1", LocalDate.of(1957, 10, 4), "Completed", "First artificial Earth satellite.");
+        List<Mission> missions = List.of(mission1);
+
+        when(repository.findByNameContainingIgnoreCase("Sputnik 1"))
+                .thenReturn(missions);
+
+        List<Mission> result = service.searchMissionsByName("Sputnik 1");
+
+        assertEquals(1, result.size());
+        assertEquals(mission1.getName(), result.get(0).getName());
+
+        verify(repository, times(0)).findByLaunchDate(any(LocalDate.class));
+        verify(repository, times(0)).findAll();
+    }
+
+    @Test
+    public void testSearchMissionsByDate() {
+        Mission mission1 = new Mission(1L, "Sputnik 1", LocalDate.of(1957, 10, 4), "Completed", "First artificial Earth satellite.");
+        List<Mission> missions = List.of(mission1);
+
+        when(repository.findByLaunchDate(LocalDate.of(1957,10,4)))
+                .thenReturn(missions);
+
+        List<Mission> result = service.searchMissionsByDate(LocalDate.of(1957,10,4));
+
+        assertEquals(1, result.size());
+        assertEquals(mission1.getName(), result.get(0).getName());
+
+        verify(repository, times(0)).findByNameContainingIgnoreCase(any(String.class));
+        verify(repository, times(0)).findAll();
+    }
+
     // TODO add more service tests?
 
 }
