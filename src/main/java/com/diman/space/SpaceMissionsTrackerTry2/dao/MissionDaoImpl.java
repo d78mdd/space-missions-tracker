@@ -2,6 +2,7 @@ package com.diman.space.SpaceMissionsTrackerTry2.dao;
 
 import com.diman.space.SpaceMissionsTrackerTry2.model.Mission;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -37,7 +38,15 @@ public class MissionDaoImpl implements MissionDao {
         String sql = "" +
                 "SELECT * FROM missions " +
                 "WHERE id = ?";
-        return Optional.ofNullable(jdbcTemplate.queryForObject(sql, new MissionRowMapper(), id));
+
+        Mission mission = null;
+
+        try {
+            mission = jdbcTemplate.queryForObject(sql, new MissionRowMapper(), id);
+        } catch (EmptyResultDataAccessException ignored) {
+        }
+
+        return Optional.ofNullable(mission);
     }
 
     @Override
