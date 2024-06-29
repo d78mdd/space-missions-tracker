@@ -52,14 +52,11 @@ public class MissionDaoImpl implements MissionDao {
                 "SELECT * FROM missions " +
                 "WHERE id = ?";
 
-        Mission mission = null;
-
         try {
-            mission = jdbcTemplate.queryForObject(sql, new MissionRowMapper(), id);
+            return Optional.ofNullable(jdbcTemplate.queryForObject(sql, new MissionRowMapper(), id));
         } catch (EmptyResultDataAccessException ignored) {
+            return Optional.empty();
         }
-
-        return Optional.ofNullable(mission);
     }
 
     @Override
