@@ -32,7 +32,7 @@ class SpaceMissionsTrackerTry2ApplicationTests {
     private MissionService service;
 
     @Test
-    public void getAllMissions() throws Exception {
+    public void testGetAllMissions() throws Exception {
         Mission mission1 = new Mission(1L, "Apollo 11", LocalDate.of(1969, 7, 16), "Completed", "First manned Moon landing.");
         Mission mission2 = new Mission(2L, "Mars Rover", LocalDate.of(2020, 7, 30), "Ongoing", "Mars exploration rover.");
 
@@ -47,6 +47,16 @@ class SpaceMissionsTrackerTry2ApplicationTests {
                 .andExpect(jsonPath("$", hasSize(2)))
                 .andExpect(jsonPath("$[0].name", is(mission1.getName())))
                 .andExpect(jsonPath("$[1].name", is(mission2.getName())));
+    }
+
+    @Test
+    public void testGetAllMissionsEmptyResult() {
+        // TODO implement
+    }
+
+    @Test
+    public void testGetMissionById() {
+        // TODO implement
     }
 
     @Test
@@ -71,11 +81,16 @@ class SpaceMissionsTrackerTry2ApplicationTests {
                         .content("{\"name\": \"Voyager 1\", \"launchDate\": \"1977-09-05\", \"status\":\"Completed\", \"description\":\"Interstellar space probe.\"}"))
                 .andExpect(status().isCreated())
                 .andExpect(header().string("Location", "/api/missions/1"))
-                .andExpect(jsonPath("$.id",             is(1)))
-                .andExpect(jsonPath("$.name",           is(mission.getName())))
-                .andExpect(jsonPath("$.launchDate",     is("1977-09-05")))
-                .andExpect(jsonPath("$.status",         is(mission.getStatus())))
-                .andExpect(jsonPath("$.description",    is(mission.getDescription())));
+                .andExpect(jsonPath("$.id", is(1)))
+                .andExpect(jsonPath("$.name", is(mission.getName())))
+                .andExpect(jsonPath("$.launchDate", is("1977-09-05")))
+                .andExpect(jsonPath("$.status", is(mission.getStatus())))
+                .andExpect(jsonPath("$.description", is(mission.getDescription())));
+    }
+
+    @Test
+    public void testCreateMissionInvalidDate() {
+        // TODO implement
     }
 
 

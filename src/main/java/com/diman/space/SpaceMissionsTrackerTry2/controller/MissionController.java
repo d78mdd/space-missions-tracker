@@ -56,7 +56,7 @@ public class MissionController {
     }
 
     @PutMapping("/{id}")
-    public Mission createMission(@PathVariable Long id, @RequestBody Mission mission) {
+    public Mission updateMission(@PathVariable Long id, @RequestBody Mission mission) {
         mission.setId(id);
         return missionService.saveMission(mission);
     }
