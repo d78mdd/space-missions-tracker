@@ -17,7 +17,7 @@ import java.util.List;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -50,8 +50,21 @@ class MissionControllerTests {
     }
 
     @Test
-    public void testGetMissionsByDate() {
-        // TODO implement
+    public void testGetMissionsByDate() throws Exception {
+        Mission mission1 = new Mission(1L, "Apollo 11", LocalDate.of(1969, 7, 16), "Completed", "First manned Moon landing.");
+
+        List<Mission> missions = List.of(mission1);
+
+        when(service.searchMissionsByDate(any(LocalDate.class)))
+                .thenReturn(missions);
+
+        mockMvc.perform(get("/api/missions/search?date=1969-07-16")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", hasSize(2)))
+                .andExpect(jsonPath("$[0].name", is(mission1.getName())));
+
+        verify(service, times(0)).getAllMissions();
     }
 
     @Test

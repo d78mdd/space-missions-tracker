@@ -20,6 +20,7 @@ public class SpaceMissionsTrackerTry2Application {
     TODO use DTO and mapping
     TODO validations
     TODO add variant using Gradle instead of Maven
+    TODO add variant using yaml instead application properties
 
     TODO use more conscious way for mockMvc.perform(post("/api/missions")
                         .contentType(MediaType.APPLICATION_JSON)
