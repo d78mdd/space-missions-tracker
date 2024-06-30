@@ -14,12 +14,11 @@ public class SpaceMissionsTrackerTry2Application {
 
     /*
     TODO use template engine thymeleaf
-    TODO instead of JPA use JDBC
     TODO instead of H2 in-mem DB use stored DB
     TODO use swagger
     TODO use DTO and mapping
     TODO validations
-    TODO add variant using yaml instead application properties
+    TODO add DAO tests
 
     TODO use more conscious way for mockMvc.perform(post("/api/missions")
                         .contentType(MediaType.APPLICATION_JSON)
