@@ -115,6 +115,4 @@ public class MissionServiceTests {
         verify(repository, times(0)).findAll();
     }
 
-    // TODO add more service tests?
-
 }

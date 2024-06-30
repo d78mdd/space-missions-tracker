@@ -12,20 +12,4 @@ public class SpaceMissionsTrackerTry2Application {
         SpringApplication.run(SpaceMissionsTrackerTry2Application.class, args);
     }
 
-    /*
-    TODO use template engine thymeleaf
-    TODO instead of JPA use JDBC
-    TODO instead of H2 in-mem DB use stored DB
-    TODO use swagger
-    TODO use DTO and mapping
-    TODO validations
-    TODO add variant using yaml instead application properties
-
-    TODO use more conscious way for mockMvc.perform(post("/api/missions")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content
-        for the next project?
-    TODO use more conscious way for andExpect(jsonPath())
-        for the next project?
-     */
 }
