@@ -19,7 +19,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 @SpringBootTest
-public class MissionServiceTests {
+public class MissionServiceUnitTests {
 
     @MockBean
     private MissionRepository repository;
