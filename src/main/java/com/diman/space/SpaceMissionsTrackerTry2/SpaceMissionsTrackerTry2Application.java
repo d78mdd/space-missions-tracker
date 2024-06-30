@@ -14,7 +14,7 @@ public class SpaceMissionsTrackerTry2Application {
 
     /*
     TODO use template engine thymeleaf
-    TODO instead of H2 in-mem DB use stored DB
+    TODO add variant - instead of H2 in-mem DB use stored DB
     TODO use swagger
     TODO use DTO and mapping
     TODO validations
