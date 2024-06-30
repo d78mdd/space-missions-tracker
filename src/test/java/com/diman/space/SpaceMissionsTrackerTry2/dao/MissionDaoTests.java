@@ -37,6 +37,16 @@ public class MissionDaoTests {
 
     @Test
     public void testFindByLaunchDate() {
+        Mission mission1 = new Mission("New Horizons", LocalDate.of(2006, 1, 9), "Ongoing", "Flyby study of Pluto and the Kuiper Belt");
+        Mission mission2 = new Mission("Appollo 13", LocalDate.of(1970, 4, 11), "Aborted", "Third crewed mission to land on the Moon, aborted due to and oxygen tank explosion");
+        List<Mission> resultBeforeInsert = dao.findAll();
+        dao.insert(mission1);
+        dao.insert(mission2);
+
+        List<Mission> resultAfterUpdate = dao.findByLaunchDate(LocalDate.of(2006, 1, 9));
+
+        Assertions.assertEquals(0, resultBeforeInsert.size());
+        Assertions.assertEquals(1, resultAfterUpdate.size());
     }
 
     @Test
