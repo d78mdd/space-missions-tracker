@@ -1,6 +1,5 @@
 package com.diman.space.SpaceMissionsTrackerTry2;
 
-import com.diman.space.SpaceMissionsTrackerTry2.model.Mission;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -8,15 +7,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
-import java.time.LocalDate;
-import java.util.List;
-
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -61,6 +56,22 @@ public class MissionControllerTests {
         mockMvc.perform(get("/api/missions/1")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNotFound());
+    }
+
+
+    @Test
+    public void testCreateMission() throws Exception {
+
+        mockMvc.perform(post("/api/missions")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"name\": \"Skylab\", \"launchDate\": \"1973-05-14\", \"status\":\"Completed\", \"description\":\"First United States space station.\"}"))
+                .andExpect(status().isCreated())
+                .andExpect(header().string("Location", "/api/missions/1"))
+                .andExpect(jsonPath("$.id", is(1)))
+                .andExpect(jsonPath("$.name", is("Skylab")))
+                .andExpect(jsonPath("$.launchDate", is("1973-05-14")))
+                .andExpect(jsonPath("$.status", is("Completed")))
+                .andExpect(jsonPath("$.description", is("First United States space station.")));
     }
 
 }
