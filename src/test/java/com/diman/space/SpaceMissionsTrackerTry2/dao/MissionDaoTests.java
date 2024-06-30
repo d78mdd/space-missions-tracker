@@ -52,12 +52,15 @@ public class MissionDaoTests {
     @Test
     public void testInsert() {
         Mission mission = new Mission("Hubble Space Telescope", LocalDate.of(1990, 4, 24), "Ongoing", "Orbiting telescope for astronomical observations");
+        Mission resultBeforeInsert = dao.findById(1L).orElse(null);
 
         dao.insert(mission);
 
-        Mission insertedMission = dao.findById(1L).get();
-        assertNotNull(insertedMission);
-        assertEquals(mission.getName(), insertedMission.getName());
+        Mission resultAfterInsert = dao.findById(1L).get();
+
+        assertNull(resultBeforeInsert);
+        assertNotNull(resultAfterInsert);
+        assertEquals(mission.getName(), resultAfterInsert.getName());
     }
 
     @Test
