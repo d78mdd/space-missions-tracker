@@ -5,13 +5,16 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.jdbc.Sql;
 
 import java.time.LocalDate;
 
 import static org.hibernate.validator.internal.util.Contracts.assertNotNull;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.springframework.test.context.jdbc.Sql.ExecutionPhase.AFTER_TEST_METHOD;
 
 @SpringBootTest
+@Sql(value = "/schema.sql", executionPhase = AFTER_TEST_METHOD)
 public class MissionDaoTests {
 
     @Autowired
@@ -19,6 +22,8 @@ public class MissionDaoTests {
 
 
     // TODO shorten lines / extract test data for missions as beforeTest
+
+    // TODO consider adding a @ParameterizedTest
 
 
     @Test
