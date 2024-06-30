@@ -10,6 +10,6 @@ yaml properties version:
 
 https://github.com/d78mdd/space-missions-tracker/tree/yaml
 
-jdbc storage and retrieval version:
+jdbc storage and retrieval version including tests:
 
 https://github.com/d78mdd/space-missions-tracker/tree/jdbc
