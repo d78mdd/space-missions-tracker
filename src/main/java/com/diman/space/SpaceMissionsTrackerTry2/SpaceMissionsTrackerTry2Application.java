@@ -14,5 +14,6 @@ public class SpaceMissionsTrackerTry2Application {
 
     /*
     TODO add variant - instead of H2 in-mem DB use stored DB
+    TODO consider adding @ParameterizedTests in DAO
      */
 }
