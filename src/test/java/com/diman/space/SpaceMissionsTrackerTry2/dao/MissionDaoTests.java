@@ -3,12 +3,16 @@ package com.diman.space.SpaceMissionsTrackerTry2.dao;
 import com.diman.space.SpaceMissionsTrackerTry2.model.Mission;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.jdbc.Sql;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.Stream;
 
 import static org.hibernate.validator.internal.util.Contracts.assertNotNull;
 import static org.junit.jupiter.api.Assertions.*;
@@ -21,14 +25,26 @@ public class MissionDaoTests {
     @Autowired
     private MissionDao dao;
 
+    // TODO shorten lines / extract test data for missions as beforeTest or in a data.sql in test resources , no
 
-    // TODO shorten lines / extract test data for missions as beforeTest or in a data.sql in test resources
-
-    // TODO consider adding a @ParameterizedTest
+    static Stream<Arguments> arguments() {
+        return Stream.of(
+                Arguments.of(new Mission("Pioneer 10", LocalDate.of(1972, 3, 2), "Completed", "First spacecraft to travel through the asterod belt and make a flyby of Jupiter")),
+                Arguments.of(new Mission("", LocalDate.of(1972, 3, 2), "Completed", "First spacecraft to travel through the asterod belt and make a flyby of Jupiter")),
+                Arguments.of(new Mission("Pioneer 10", LocalDate.of(1972, 3, 2), "", "First spacecraft to travel through the asterod belt and make a flyby of Jupiter")),
+                Arguments.of(new Mission("Pioneer 10", LocalDate.of(1972, 3, 2), "Completed", ""))
+                );
+    }
 
 
     @Test
     public void testFindByNameContainingIgnoreCase() {
+    }
+
+    @ParameterizedTest()
+    @MethodSource("arguments")
+    public void testWithVariousData(Mission mission) {
+        assertDoesNotThrow(() -> dao.insert(mission));
     }
 
     @Test
@@ -41,8 +57,8 @@ public class MissionDaoTests {
 
         List<Mission> result = dao.findByExactName("Cassini-Huygens");
 
-        Assertions.assertEquals(0, resultBeforeInsert.size());
-        Assertions.assertEquals(1, result.size());
+        assertEquals(0, resultBeforeInsert.size());
+        assertEquals(1, result.size());
     }
 
     @Test
@@ -55,8 +71,8 @@ public class MissionDaoTests {
 
         List<Mission> result = dao.findByLaunchDate(LocalDate.of(2006, 1, 9));
 
-        Assertions.assertEquals(0, resultBeforeInsert.size());
-        Assertions.assertEquals(1, result.size());
+        assertEquals(0, resultBeforeInsert.size());
+        assertEquals(1, result.size());
     }
 
     @Test
@@ -69,8 +85,8 @@ public class MissionDaoTests {
 
         List<Mission> resultAfterInsert = dao.findAll();
 
-        Assertions.assertEquals(0, resultBeforeInsert.size());
-        Assertions.assertEquals(2, resultAfterInsert.size());
+        assertEquals(0, resultBeforeInsert.size());
+        assertEquals(2, resultAfterInsert.size());
     }
 
     @Test
