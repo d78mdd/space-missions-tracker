@@ -50,6 +50,27 @@ public class MissionControllerTests {
                 .andExpect(jsonPath("$[0].name", is("Vostok 1")));
     }
 
+    public void testGetMissionsByName() {
+        // TODO implement
+    }
+
+    public void testGetMissionsByDateEmptyResult() {
+        // TODO implement
+    }
+
+    public void testGetMissionsByNameEmptyResult() {
+        // TODO implement
+    }
+
+    public void testGetAllMissionsEmptyResult() {
+        // TODO implement
+    }
+
+
+    public void testGetMissionById() {
+        // TODO implement
+    }
+
     @Test
     public void testGetMissionByIdNotFound() throws Exception {
 
@@ -73,5 +94,36 @@ public class MissionControllerTests {
                 .andExpect(jsonPath("$.status", is("Completed")))
                 .andExpect(jsonPath("$.description", is("First United States space station.")));
     }
+
+    public void testCreateMissionInvalidDate() {
+        // TODO implement
+    }
+
+    public void testCreateMissionEmptyRequestBody() {
+        // TODO implement
+    }
+
+
+    public void testUpdateMission() {
+        // TODO implement
+    }
+
+    public void testUpdateMissionMissingId() {
+        // TODO implement
+    }
+
+    public void testUpdateMissionMissingRequestBody() {
+        // TODO implement
+    }
+
+
+    public void testDeleteMission() {
+        // TODO implement
+    }
+
+    public void testDeleteMissionMissingId() {
+        // TODO implement
+    }
+
 
 }
