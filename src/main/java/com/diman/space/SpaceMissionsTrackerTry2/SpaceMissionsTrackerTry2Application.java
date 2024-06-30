@@ -19,6 +19,7 @@ public class SpaceMissionsTrackerTry2Application {
     TODO use DTO and mapping
     TODO validations
     TODO add controller tests without mocks
+    TODO consider adding @ParameterizedTests
 
     TODO use more conscious way for mockMvc.perform(post("/api/missions")
                         .contentType(MediaType.APPLICATION_JSON)
