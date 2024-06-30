@@ -9,8 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.time.LocalDate;
 
 import static org.hibernate.validator.internal.util.Contracts.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 public class MissionDaoTests {
@@ -79,5 +78,17 @@ public class MissionDaoTests {
 
     @Test
     public void testUpdate() {
+        Mission mission = new Mission("Mars 2020 Perseverance", LocalDate.of(2020, 7, 30), "Ongoing", "Mars rover mission to seek signs of ancient life and collect samples");
+        dao.insert(mission);
+        Mission resultBeforeUpdate = dao.findById(1L).get();
+
+        Mission missionUpdate = new Mission(1L, "Mars 2020 Perseverance", LocalDate.of(2020, 7, 30), "Ongoing", "Mars rover mission to seek signs of ancient life and collect samples, updated");
+        dao.update(missionUpdate);
+
+        Mission resultAfterUpdate = dao.findById(1L).get();
+
+        Assertions.assertNotNull(resultBeforeUpdate);
+        Assertions.assertNotNull(resultAfterUpdate);
+        assertNotEquals(resultBeforeUpdate.getDescription(), resultAfterUpdate.getDescription());
     }
 }
