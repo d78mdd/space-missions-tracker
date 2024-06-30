@@ -1,6 +1,5 @@
-package com.diman.space.SpaceMissionsTrackerTry2;
+package com.diman.space.SpaceMissionsTrackerTry2.controller;
 
-import com.diman.space.SpaceMissionsTrackerTry2.controller.MissionController;
 import com.diman.space.SpaceMissionsTrackerTry2.model.Mission;
 import com.diman.space.SpaceMissionsTrackerTry2.service.MissionService;
 import org.junit.jupiter.api.Test;
@@ -20,7 +19,8 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(MissionController.class)
 class MissionControllerTests {

@@ -1,8 +1,7 @@
-package com.diman.space.SpaceMissionsTrackerTry2;
+package com.diman.space.SpaceMissionsTrackerTry2.service;
 
-import com.diman.space.SpaceMissionsTrackerTry2.model.Mission;
 import com.diman.space.SpaceMissionsTrackerTry2.dao.MissionDao;
-import com.diman.space.SpaceMissionsTrackerTry2.service.MissionService;
+import com.diman.space.SpaceMissionsTrackerTry2.model.Mission;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -102,10 +101,10 @@ public class MissionServiceTests {
         Mission mission1 = new Mission(1L, "Sputnik 1", LocalDate.of(1957, 10, 4), "Completed", "First artificial Earth satellite.");
         List<Mission> missions = List.of(mission1);
 
-        when(dao.findByLaunchDate(LocalDate.of(1957,10,4)))
+        when(dao.findByLaunchDate(LocalDate.of(1957, 10, 4)))
                 .thenReturn(missions);
 
-        List<Mission> result = service.searchMissionsByDate(LocalDate.of(1957,10,4));
+        List<Mission> result = service.searchMissionsByDate(LocalDate.of(1957, 10, 4));
 
         assertEquals(1, result.size());
         assertEquals(mission1.getName(), result.get(0).getName());
