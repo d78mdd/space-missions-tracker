@@ -13,18 +13,6 @@ public class SpaceMissionsTrackerTry2Application {
     }
 
     /*
-    TODO use template engine thymeleaf
-    TODO instead of H2 in-mem DB use stored DB
-    TODO use swagger
-    TODO use DTO and mapping
-    TODO validations
-    TODO add DAO tests
-
-    TODO use more conscious way for mockMvc.perform(post("/api/missions")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content
-        for the next project?
-    TODO use more conscious way for andExpect(jsonPath())
-        for the next project?
+    TODO add variant - instead of H2 in-mem DB use stored DB
      */
 }
