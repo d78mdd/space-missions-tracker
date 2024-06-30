@@ -23,23 +23,23 @@ public class MissionDaoTests {
 
 
     @Test
-    void findByNameContainingIgnoreCase() {
+    public void testFindByNameContainingIgnoreCase() {
     }
 
     @Test
-    void findByExactName() {
+    public void testFindByExactName() {
     }
 
     @Test
-    void findByLaunchDate() {
+    public void testFindByLaunchDate() {
     }
 
     @Test
-    void findAll() {
+    public void testFindAll() {
     }
 
     @Test
-    void findById() {
+    public void testFindById() {
         Mission mission = new Mission("Curiosity Rover", LocalDate.of(2011, 11, 26), "Ongoing", "Mars rover exploring the surface of Mars");
         dao.insert(mission);
 
@@ -50,7 +50,7 @@ public class MissionDaoTests {
     }
 
     @Test
-    void insert() {
+    public void testInsert() {
         Mission mission = new Mission("Hubble Space Telescope", LocalDate.of(1990, 4, 24), "Ongoing", "Orbiting telescope for astronomical observations");
 
         dao.insert(mission);
@@ -61,7 +61,7 @@ public class MissionDaoTests {
     }
 
     @Test
-    void deleteById() {
+    public void testDeleteById() {
         Mission mission = new Mission("ISS Expedition 1", LocalDate.of(2000, 10, 31), "Completed", "First long-duration stay on the International Space Station");
         dao.insert(mission);
         Mission resultBeforeDelete = dao.findById(1L).get();
@@ -75,6 +75,6 @@ public class MissionDaoTests {
     }
 
     @Test
-    void update() {
+    public void testUpdate() {
     }
 }

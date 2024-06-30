@@ -27,6 +27,13 @@ public class Mission {
 
     }
 
+    public Mission(String name, LocalDate launchDate, String status, String description) {
+        this.name = name;
+        this.launchDate = launchDate;
+        this.status = status;
+        this.description = description;
+    }
+
     public Mission(Long id, String name, LocalDate launchDate, String status, String description) {
         this.id = id;
         this.name = name;
