@@ -33,6 +33,16 @@ public class MissionDaoTests {
 
     @Test
     public void testFindByExactName() {
+        Mission mission1 = new Mission("Pioneer 10", LocalDate.of(1972, 3, 2), "Completed", "First spacecraft to travel through the asterod belt and make a flyby of Jupiter");
+        Mission mission2 = new Mission("Cassini-Huygens", LocalDate.of(1997, 10, 15), "Completed", "Study of Saturn and its moons, including the Huygens probe landing on Titan");
+        List<Mission> resultBeforeInsert = dao.findAll();
+        dao.insert(mission1);
+        dao.insert(mission2);
+
+        List<Mission> result = dao.findByExactName("Cassini-Huygens");
+
+        Assertions.assertEquals(0, resultBeforeInsert.size());
+        Assertions.assertEquals(1, result.size());
     }
 
     @Test
@@ -43,10 +53,10 @@ public class MissionDaoTests {
         dao.insert(mission1);
         dao.insert(mission2);
 
-        List<Mission> resultAfterUpdate = dao.findByLaunchDate(LocalDate.of(2006, 1, 9));
+        List<Mission> result = dao.findByLaunchDate(LocalDate.of(2006, 1, 9));
 
         Assertions.assertEquals(0, resultBeforeInsert.size());
-        Assertions.assertEquals(1, resultAfterUpdate.size());
+        Assertions.assertEquals(1, result.size());
     }
 
     @Test
@@ -57,10 +67,10 @@ public class MissionDaoTests {
         dao.insert(mission1);
         dao.insert(mission2);
 
-        List<Mission> resultAfterUpdate = dao.findAll();
+        List<Mission> resultAfterInsert = dao.findAll();
 
         Assertions.assertEquals(0, resultBeforeInsert.size());
-        Assertions.assertEquals(2, resultAfterUpdate.size());
+        Assertions.assertEquals(2, resultAfterInsert.size());
     }
 
     @Test
