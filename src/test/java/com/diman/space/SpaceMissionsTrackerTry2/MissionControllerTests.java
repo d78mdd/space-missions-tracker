@@ -55,4 +55,12 @@ public class MissionControllerTests {
                 .andExpect(jsonPath("$[0].name", is("Vostok 1")));
     }
 
+    @Test
+    public void testGetMissionByIdNotFound() throws Exception {
+
+        mockMvc.perform(get("/api/missions/1")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNotFound());
+    }
+
 }
