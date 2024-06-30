@@ -41,6 +41,16 @@ public class MissionDaoTests {
 
     @Test
     public void testFindAll() {
+        Mission mission1 = new Mission("Mars 2020 Perseverance", LocalDate.of(2020, 7, 30), "Ongoing", "Mars rover mission to seek signs of ancient life and collect samples");
+        Mission mission2 = new Mission("Galileo", LocalDate.of(1989, 10, 18), "Completed", "Study of Jupiter and its moons");
+        List<Mission> resultBeforeInsert = dao.findAll();
+        dao.insert(mission1);
+        dao.insert(mission2);
+
+        List<Mission> resultAfterUpdate = dao.findAll();
+
+        Assertions.assertEquals(0, resultBeforeInsert.size());
+        Assertions.assertEquals(2, resultAfterUpdate.size());
     }
 
     @Test
