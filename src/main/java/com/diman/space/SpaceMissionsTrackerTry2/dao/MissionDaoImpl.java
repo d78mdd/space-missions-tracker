@@ -13,8 +13,12 @@ import java.util.Optional;
 @Repository
 public class MissionDaoImpl implements MissionDao {
 
+    private final JdbcTemplate jdbcTemplate;
+
     @Autowired
-    private JdbcTemplate jdbcTemplate;
+    public MissionDaoImpl(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
 
     @Override
     public List<Mission> findByNameContainingIgnoreCase(String name) {
