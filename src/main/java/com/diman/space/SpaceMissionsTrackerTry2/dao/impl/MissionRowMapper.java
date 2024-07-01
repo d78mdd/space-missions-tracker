@@ -1,4 +1,4 @@
-package com.diman.space.SpaceMissionsTrackerTry2.dao;
+package com.diman.space.SpaceMissionsTrackerTry2.dao.impl;
 
 import com.diman.space.SpaceMissionsTrackerTry2.model.Mission;
 import org.springframework.jdbc.core.RowMapper;

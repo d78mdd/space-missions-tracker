@@ -1,5 +1,6 @@
-package com.diman.space.SpaceMissionsTrackerTry2.dao;
+package com.diman.space.SpaceMissionsTrackerTry2.dao.impl;
 
+import com.diman.space.SpaceMissionsTrackerTry2.dao.MissionDao;
 import com.diman.space.SpaceMissionsTrackerTry2.model.Mission;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
