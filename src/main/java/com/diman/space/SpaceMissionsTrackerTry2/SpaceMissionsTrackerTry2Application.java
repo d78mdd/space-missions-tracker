@@ -45,6 +45,7 @@ public class SpaceMissionsTrackerTry2Application {
     TODO add support for more than 1 DAO implementation - 1 JPA and 1 JDBC?
     TODO add support for more than 1 Service implementation - ?
     TODO add support for more than 1 Controller implementation - 1 RestAPI and 1 Thymeleaf?
+    TODO add variant with xml based configuration?
 
     TODO use more conscious way for mockMvc.perform(post("/api/missions")
                         .contentType(MediaType.APPLICATION_JSON)
